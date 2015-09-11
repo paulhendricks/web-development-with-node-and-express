@@ -6,13 +6,13 @@ var http = require("http"),
 
 function serveStaticFiles(res, path, contentType, responseCode) {
     if(!responseCode) responseCode = 200;
-    fs.readFile(_dirname + path, function(err, data) {
+    fs.readFile(__dirname + path, function(err, data) {
         if(err) {
             res.writeHead(500, { 'Content-Type': 'text/plain' });
             res.end('500 - Internal Error');
         } else {
             res.writeHead(responseCode, { 'Content-Type': 'text/plain' });
-            red.end(data)
+            res.end(data)
         }
     })
 }
